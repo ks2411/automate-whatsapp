@@ -1,1 +1,5 @@
-
+flask
+twillio
+pymongo
+dnspython
+gunicorn
