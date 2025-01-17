@@ -23,6 +23,7 @@ app=Flask(__name__)
 
 @app.route("/", methods=["get","post"])
 def reply():
+      app.logger.info("Получен запрос: %s", request.form)
       text=request.form.get("Body")
       number=request.form.get("From")
       number=number.replace("whatsapp:","")
