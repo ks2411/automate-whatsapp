@@ -1,3 +1,6 @@
+
+        
+   
 from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
 from pymongo import MongoClient
@@ -20,18 +23,8 @@ app=Flask(__name__)
 
 @app.route("/", methods=["get","post"])
 def reply():
-
-      try:
-        # Получаем текст и номер
-        text = request.form.get("Body")
-        number = request.form.get("From")
-
-        # Проверяем, что поле 'From' не пустое
-        if not number:
-            raise ValueError("Поле 'From' отсутствует или пустое")
-
-        # Удаляем префикс 'whatsapp:'
-      number = number.replace("whatsapp:", "")
+      text=request.form.get("Body")
+      number=request.form.get("From")
       number=number.replace("whatsapp:","")
       response=MessagingResponse()
       user=users.find_one({"number":number})
@@ -103,4 +96,4 @@ def reply():
         
    
 if __name__=="__main__":#запуск только при прямом запуске
-      app.run()
+      app.run(port=5000)
