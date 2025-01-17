@@ -20,8 +20,18 @@ app=Flask(__name__)
 
 @app.route("/", methods=["get","post"])
 def reply():
-      text=request.form.get("Body")
-      number=request.form.get("From")
+
+      try:
+        # Получаем текст и номер
+        text = request.form.get("Body")
+        number = request.form.get("From")
+
+        # Проверяем, что поле 'From' не пустое
+        if not number:
+            raise ValueError("Поле 'From' отсутствует или пустое")
+
+        # Удаляем префикс 'whatsapp:'
+      number = number.replace("whatsapp:", "")
       number=number.replace("whatsapp:","")
       response=MessagingResponse()
       user=users.find_one({"number":number})
