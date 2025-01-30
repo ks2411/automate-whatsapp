@@ -30,9 +30,10 @@ def reply():
       response=MessagingResponse()
       user=users.find_one({"number":number})
       if bool(user)==False:
-            response.message("Hi, thanks for contacting *The Red Velvet*.\nYou can choose from one of the options below: "
-                    "\n\n*Type*\n\n 1️⃣ To *contact* us \n 2️⃣ To *order* snacks \n 3️⃣ To know our *working hours* \n 4️⃣ "
-                    "To get our *address*")
+           response.message("שלום, תודה שפנית ל-*The Red Velvet*.\nאתה יכול לבחור אחת מהאפשרויות הבאות: "
+                    "\n\n*הקלד*\n\n 1️⃣ כדי *ליצור קשר* איתנו \n 2️⃣ כדי *להזמין* חטיפים \n 3️⃣ כדי לדעת את *שעות הפעילות* שלנו \n 4️⃣ "
+                    "כדי לקבל את *הכתובת* שלנו")
+
             users.insert_one({"number":number,"status":"main","messages":[]})
       elif user["status"]=="main":
             try:
