@@ -39,7 +39,8 @@ def reply():
             try:
              option=int(text)
              if option==1:
-                 response.message( "You can contact us through phone or e-mail.\n\n*Phone*: 991234 56789 \n*E-mail* : contact@theredvelvet.io")
+            response.message("אתה יכול ליצור איתנו קשר דרך טלפון או אימייל.\n\n*טלפון*: 991234 56789 \n*אימייל*: contact@theredvelvet.io")
+
              elif option==2:
                  response.message( "You entered the order mode")
                  users.update_one({"number": number}, {"$set": {"status": "ordering"}})
